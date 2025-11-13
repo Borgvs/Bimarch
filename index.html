@@ -991,7 +991,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm"></form>
                         <div class="form-group">
                             <label for="name">Nome</label>
                             <input type="text" id="name" required>
@@ -1009,7 +1009,9 @@
                             <textarea id="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-light btn-large">Enviar Mensagem</button>
-                    </form>
+						<form name="contato" method="POST" data-netlify="true">
+   						<input type="hidden" name="form-name" value="contato">
+					</form>
                 </div>
             </div>
         </div>

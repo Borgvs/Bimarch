@@ -98,3 +98,35 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', checkFade);
     checkFade();
 });
+
+// Fix para tabs funcionarem
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Esconder todos
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Mostrar clicado
+            this.classList.add('active');
+            const targetId = this.getAttribute('data-tab');
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.style.display = 'block';
+                target.classList.add('active');
+            }
+        });
+    });
+    
+    // Mostrar primeira tab
+    const firstTab = document.querySelector('.tab-content.active');
+    if (firstTab) firstTab.style.display = 'block';
+});
